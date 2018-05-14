@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="layout/template.xhtml">
+    <ui:define name="title">Список сотрудников</ui:define>
+    <ui:define name="content">
+        <h1>Список сотрудников</h1>
+        <h:form>
+            <h:dataTable id="employees" value="#{employeeBean.employees}" var="employee" border="1">
+
+                <h:column>
+                    <f:facet name="header">Имя: </f:facet>
+                    <h:link value="#{employee.firstName}" outcome="employee">
+                        <f:param name="id" value="#{employee.id}"/>
+                    </h:link>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Фамилия: </f:facet>
+                    <h:outputText value="#{employee.secondName}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Отчество: </f:facet>
+                    <h:outputText value="#{employee.lastName}"/>
+                </h:column>
+
+                <h:column>
+                    <h:commandLink action="index" value="Update" actionListener=""/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>
